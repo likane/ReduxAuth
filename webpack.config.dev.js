@@ -1,10 +1,24 @@
 import path from 'path';
 
 export default {
-	entry: path.join(__dirname, '/client/index.js'),
-	output: {
-		path:'/'
+	devtools: 'eval-source-map',
+	entry: 
+		[
+
+		'webpack-hot-middleware/client',
+		path.join(__dirname, '/client/index.js'),
+
+
+		],
+		output: {
+		path:'/',
+		publicPath: '/'
 	},
+
+	plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	],
+
 	module: {
 		loaders: [
 		{
