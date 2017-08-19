@@ -7,6 +7,9 @@ let router = express.Router();
 function validateInput(data) {
 	let errors = {};
 
+	if (Validator.isNull(data.username)) {
+		errors.username = 'username is required';
+	}
 	if (Validator.isNull(data.email)) {
 		errors.email = 'Email is required';
 	}
@@ -34,11 +37,17 @@ function validateInput(data) {
 
 router.post('/', (req, res) => {
 
+	SetTimeout(() => {
+
+
+
 	const {errors, isValid } =validateInpute(req.body);
 
 	if (!isValid) {
 		res.status(400).json(errors);
 	}
+
+}, 5000);
 });
 
 export default router;
