@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 
 export default {
 	devtools: 'eval-source-map',
@@ -16,6 +17,8 @@ export default {
 	},
 
 	plugins: [
+		new webpack.NoErrorsPlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin()
 	],
 
@@ -24,7 +27,7 @@ export default {
 		{
 			test: /\.js$/,
 			include: path.join(__dirname, 'client'),
-			loaders: [ 'babel']
+			loaders: [ 'react-hot', 'babel']
 		}
 
 		]
