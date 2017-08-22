@@ -8,7 +8,7 @@ import {addFlashMessage} from '../../actions/flashMessage';
 class SignupPage extends React.Component {
 	render() {
 		return (
-			const {userSignupRequest} = this.props;
+			const {userSignupRequest, addFlashMessage} = this.props;
 			<div className="row">
 				<div className="col-md-4 col-md-offset-4">
 					<SignupForm userSignupRequest={userSignupRequest} addFlashMessage={addFlashMessage}/>
