@@ -11,7 +11,7 @@ class FlashMessage extends React.Component {
 	onClick() {
 		this.props.deleteFlashMessage(this.props.message.id);
 	}
-	
+
 	render(){
 		const {id, type, text} = this.props.message;
 		return (
@@ -28,7 +28,8 @@ class FlashMessage extends React.Component {
 }
 
 FlashMessage.propTypes = {
-	message: React.PropTypes.object.isRequired
+	message: React.PropTypes.object.isRequired,
+	deleteFlashMessage: React.propTypes.func.isRequired
 }
 
 export default FlashMessage;
