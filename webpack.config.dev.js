@@ -3,17 +3,13 @@ import webpack from 'webpack';
 
 export default {
 	devtools: 'eval-source-map',
-	entry: 
-		[
-
+	entry: [
 		'webpack-hot-middleware/client',
 		path.join(__dirname, '/client/index.js'),
-
-
-		],
-		output: {
-		path:'/',
-		publicPath: '/'
+	],
+	output: {
+			path:'/',
+			publicPath: '/'
 	},
 
 	plugins: [
@@ -27,10 +23,9 @@ export default {
 		{
 			test: /\.js$/,
 			include: [
-
-			path.join(__dirname, 'client'),
-			path.join(__dirname, 'server/shared')
-			]
+				path.join(__dirname, 'client'),
+				path.join(__dirname, 'server/shared')
+			],
 			loaders: [ 'react-hot', 'babel']
 		}
 
