@@ -6,9 +6,12 @@ import {userSignupRequest} from '../../actions/signupActions';
 import {addFlashMessage} from '../../actions/flashMessage';
 
 class SignupPage extends React.Component {
+	
 	render() {
+
+		const {userSignupRequest, addFlashMessage} = this.props;
+
 		return (
-			const {userSignupRequest, addFlashMessage} = this.props;
 			<div className="row">
 				<div className="col-md-4 col-md-offset-4">
 					<SignupForm userSignupRequest={userSignupRequest} addFlashMessage={addFlashMessage}/>
@@ -21,9 +24,9 @@ class SignupPage extends React.Component {
 }
 
 SignupPage.propTypes ={
-	userSignupRequest: React.propTypes.func.isRequired
+	userSignupRequest: React.propTypes.func.isRequired,
 	addFlashMessage: React.propTypes.func.isRequired
 }
 
 
-export default connect((state) => { null, {userSignupRequest, addFlashMessage}) SignupPage;
+export default connect( null, {userSignupRequest, addFlashMessage})(SignupPage);
