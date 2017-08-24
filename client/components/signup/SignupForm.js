@@ -15,8 +15,8 @@ class SignupForm extends React.Component {
 			email: '',
 			password: '',
 			passwordConfirmation: '',
-			timezone: ''
-			erros: {},
+			timezone: '',
+			errors: {},
 			isLoading: false
 		}
 
