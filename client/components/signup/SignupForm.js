@@ -38,6 +38,15 @@ class SignupForm extends React.Component {
 		return isValid;
 	}
 
+	checkUserExists(e){
+		const field = e.target.name;
+		const val = e.target.value;
+		if (val !== '') {
+			this.props.isUserExists(val).then(res =>{
+
+			});
+		}
+	}
 	onSubmit(e) {
 		e.preventDefault();
 
@@ -72,6 +81,7 @@ class SignupForm extends React.Component {
  					error={errors.username}
  					label="Username"
  					onChange={this.onChange}
+ 					checkUserExists = {this.checkUserExists}
  					value={this.state.username}
  					field="username"
  				/>
@@ -79,6 +89,7 @@ class SignupForm extends React.Component {
  					error={errors.email}
  					label="Username"
  					onChange={this.onChange}
+ 					checkUserExists = {this.checkUserExists}
  					value={this.state.email}
  					field="username"
  				/>
