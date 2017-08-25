@@ -17,7 +17,8 @@ class SignupForm extends React.Component {
 			passwordConfirmation: '',
 			timezone: '',
 			errors: {},
-			isLoading: false
+			isLoading: false,
+			invalid: false
 		}
 
 		this.onChange=this.onChange.bind(this);
@@ -43,7 +44,16 @@ class SignupForm extends React.Component {
 		const val = e.target.value;
 		if (val !== '') {
 			this.props.isUserExists(val).then(res =>{
-
+				let errors = this.state.errors;
+				let invalid;
+				if(res.data.user) {
+					errors[field] = 'There is user with such ' + field;
+					invalid = true;
+				} else {
+					errors[field] = '';
+					invalid = false;
+				}
+				this.setState({ errors, invalid });
 			});
 		}
 	}
@@ -121,7 +131,7 @@ class SignupForm extends React.Component {
  				</div> 
 
  				<div className="form-group">
- 					<button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
+ 					<button disabled={this.state.isLoading || this.state.invalid} className="btn btn-primary btn-lg">
  					sign up
  					</button>
  				</div>

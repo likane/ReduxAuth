@@ -39,7 +39,17 @@ function validateInput(data, otherValidations) {
 	
 }
 
-router.post('/', (req, res) => {
+router.get('/:identifier', (req, res) { //check if user exists
+	User.qeury({
+		select: ['username', 'email'],
+		where: {email: req.params.identifier},
+		orWhere: {username: req.params.identifier}
+	}).fetch().then(user => {
+		res.json({user});
+	});
+});
+
+router.post('/', (req, res) => { //set new user in db
 
 	SetTimeout(() => {
 
