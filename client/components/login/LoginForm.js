@@ -37,7 +37,10 @@ class LoginForm extends React.Component {
 
 			 if (this.isValid()) {
 			 	this.setState({errors: {}, isLoading: true});
-			 	this.props.login(this.state);
+			 	this.props.login(this.state);.then(
+			 		(res) => this.context.router.push('/'),
+			 		(err) => this.setState({errors: err.data.errors, isLoading: false})
+			 		);
 			 }
 		}
 
@@ -77,6 +80,10 @@ class LoginForm extends React.Component {
 
 LoginForm.propTypes = {
 	login: React.propTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+	Router: React.propTypes
 }
 
 export default  connect(null, {login}) (LoginForm);
