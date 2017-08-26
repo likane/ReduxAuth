@@ -1,5 +1,8 @@
 import React from 'react';
 import TextFieldGroup from '../common/TextFieldGroup';
+import validateInput from '../../server/shared/validations/login';
+import { connect } from 'react-redux';
+import { login} from '../../actions/login';
 
 class LoginForm extends React.Component {
 
@@ -18,9 +21,24 @@ class LoginForm extends React.Component {
 
 	render() {
 		const { errors, identifier, password, isLoading} = this.state;
+		isValid() {
+			const {errors.isValid} = validateInput(this.state);
+
+			if (!isValid) {
+				this.setState({ errors });
+			}
+
+			return isValid;
+		}
+		
 
 		onSubmit(e) {
 			e.preventDefault();
+
+			 if (this.isValid()) {
+			 	this.setState({errors: {}, isLoading: true});
+			 	this.props.login(this.state);
+			 }
 		}
 
 		onChange(e) {
@@ -57,4 +75,8 @@ class LoginForm extends React.Component {
 	}
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+	login: React.propTypes.func.isRequired
+}
+
+export default  connect(null, {login}) (LoginForm);
