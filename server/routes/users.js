@@ -39,7 +39,7 @@ function validateInput(data, otherValidations) {
 	
 }
 
-router.get('/:identifier', (req, res) { //check if user exists
+router.get('/:identifier', (req, res) => { 
 	User.qeury({
 		select: ['username', 'email'],
 		where: {email: req.params.identifier},
