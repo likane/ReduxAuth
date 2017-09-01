@@ -60,7 +60,7 @@ class SignupForm extends React.Component {
 	onSubmit(e) {
 		e.preventDefault();
 
-		if(this.isValid() {
+		if(this.isValid()) {
 
 			this.setState({ errors: {}, isLoading: true});
 		
@@ -74,16 +74,21 @@ class SignupForm extends React.Component {
 			},
 			({err}) => this.setState({errors: err.response.data, isLoading: false})
 			);
-		})
+		}
 		
 	}
 
+
+
 	render() {
-		return (
-			const {errors} = this.state;
+
+		const {errors} = this.state;
 			const options = map(timezones, (val, key)=>
 				<option key={val} value={val} > {key}</option>
 				);
+			
+		return (
+			
 			<form onSubmit={this.onSubmit}>
  				<h1> Join our community</h1>
 

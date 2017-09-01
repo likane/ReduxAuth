@@ -19,10 +19,8 @@ class LoginForm extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 
-	render() {
-		const { errors, identifier, password, isLoading} = this.state;
-		isValid() {
-			const {errors.isValid} = validateInput(this.state);
+	isValid() {
+			const {errors, isValid} = validateInput(this.state);
 
 			if (!isValid) {
 				this.setState({ errors });
@@ -30,23 +28,31 @@ class LoginForm extends React.Component {
 
 			return isValid;
 		}
-		
 
-		onSubmit(e) {
+
+	onSubmit(e) {
 			e.preventDefault();
 
 			 if (this.isValid()) {
 			 	this.setState({errors: {}, isLoading: true});
-			 	this.props.login(this.state);.then(
+			 	this.props.login(this.state).then(
 			 		(res) => this.context.router.push('/'),
 			 		(err) => this.setState({errors: err.response.data.errors, isLoading: false})
 			 		);
 			 }
 		}
 
-		onChange(e) {
+	onChange(e) {
 			this.setState({ [e.target.name]: e.target.value});
 		}
+
+	render() {
+		const { errors, identifier, password, isLoading} = this.state;
+		
+		
+
+
+		
 		return (
 			<form onSubmit={this.onSubmit}>
 				<h1>Login</h1>
