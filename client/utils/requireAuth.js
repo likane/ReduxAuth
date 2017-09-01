@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFlashMessage} from '../actions/addFlashMessages';
+import { addFlashMessage } from '../actions/flashMessages';
 
 export default function(ComposedComponent) {
 

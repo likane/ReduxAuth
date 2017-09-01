@@ -1,4 +1,5 @@
-import Validator from 'validator'
+import Validator from 'validator';
+import isEmpty from 'lodash/isEmpty';
 
 function validateInput(data) {
 	let errors = {};

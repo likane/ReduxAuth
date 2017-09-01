@@ -1,6 +1,6 @@
 import React from 'react';
 import TextFieldGroup from '../common/TextFieldGroup';
-import validateInput from '../../server/shared/validations/login';
+import validateInput from '../../../server/shared/validations/login';
 import { connect } from 'react-redux';
 import { login} from '../../actions/authActions';
 
